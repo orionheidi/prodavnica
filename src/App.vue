@@ -6,19 +6,19 @@
     <router-link to="/products">Products</router-link>
    <!-- `<Purchase v-bind:custumers="custumers" /> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-     <router-view :custumers="custumers" />
+     <router-view :custumers="custumers" :products="products" />
 
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import Purchase from './components/Purchase.vue'
+// import Purchase from './components/Purchase.vue'
 
 export default {
   name: 'app',
   components: {
-    Purchase
+    // Purchase
     // HelloWorld
   },
 
@@ -30,22 +30,46 @@ export default {
           firstName: "Miki",
           lastName: "Vaikiki",
           email: "miki@gmial.com",
-          listaProizvoda: ["compovi", "kertridzi","ram memorije"]
+          listaProizvoda: ["Komp", "Kertridz","Ram memorija"]
         },
         {
           id: 2,
           firstName: "Macan",
           lastName: "Facan",
           email: "macan@gmial.com",
-          listaProizvoda: ["compovi", "kertridzi","baterije"]
+          listaProizvoda: ["Komp", "Kertridz","Baterija"]
         },
         {
           id: 3,
           firstName: "Lepi",
           lastName: "Kule",
           email: "lepi@gmial.com",
-          listaProizvoda: ["compovi", "prespojnici","ram memorije"]
+          listaProizvoda: ["Komp", "Prespojnik","Ram memorija"]
         },
+        
+      ],
+        products: [
+        {
+          id: 1,
+          name: "Komp",
+        },
+        {
+          id: 2,
+          name: "Prespojnik",
+      
+        },
+        {
+          id: 3,
+          name: "Ram memorija"
+        },
+        {
+          id: 4,
+          name: "Baterija"
+        },
+        {
+          id: 5,
+          name: "Kertridz"
+        }
         
       ],
 
