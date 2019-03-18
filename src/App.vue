@@ -52,23 +52,28 @@ export default {
         {
           id: 1,
           name: "Komp",
+          quantity: 33,
         },
         {
           id: 2,
           name: "Prespojnik",
+          quantity: 88,
       
         },
         {
           id: 3,
-          name: "Ram memorija"
+          name: "Ram memorija",
+          quantity: 66,
         },
         {
           id: 4,
-          name: "Baterija"
+          name: "Baterija",
+          quantity: 0,
         },
         {
           id: 5,
-          name: "Kertridz"
+          name: "Kertridz",
+          quantity: 15,
         }
         
       ],

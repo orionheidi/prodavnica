@@ -25,7 +25,7 @@
       <td> {{custumer.lastName}}  </td>
       <td> {{custumer.email}} </td>
         <button @click="removeItem(index)">Delete</button>
-        <router-link :to="`/customers/${custumer.id}`" @click="costumerSelected">Latest Purchases</router-link>
+        <router-link :to="`/customers/${custumer.id}`" @click="costumerSelected()">Latest Purchases</router-link>
     </tr>
     </table>
      <!-- `<child-component v-bind:custumers="custumers"></child-component> -->
