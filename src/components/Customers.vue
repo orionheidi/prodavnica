@@ -18,7 +18,6 @@
       <th>First Name</th>
       <th>Last Name</th>
        <th>Email</th>
-        <th>listaProizvoda</th>
       </tr>
     <tr v-for="(custumer,index) in custumers" :key="index"> 
       <td> {{custumer.id}}</td>
@@ -26,38 +25,24 @@
       <td> {{custumer.lastName}}  </td>
       <td> {{custumer.email}} </td>
         <button @click="removeItem(index)">Delete</button>
+        <router-link :to="`/customers/${custumer.id}`" @click="costumerSelected">Latest Purchases</router-link>
     </tr>
     </table>
+     <!-- `<child-component v-bind:custumers="custumers"></child-component> -->
     </div>
     
 </template>
 
 <script>
+import { serverBus } from '../main';
+// import Purchase from './Purchase.vue'
 export default {
+  //  components: {
+  //       'child-component':Purches,
+  //     },
   data() {
     return {
 
-         custumers: [
-        {
-          id: "1",
-          firstName: "Miki",
-          lastName: "Vaikiki",
-          email: "miki@gmial.com",
-        },
-        {
-          id: "2",
-          firstName: "Macan",
-          lastName: "Facan",
-          email: "macan@gmial.com",
-        },
-        {
-          id: "3",
-          firstName: "Lepi",
-          lastName: "Kule",
-          email: "lepi@gmial.com",
-        },
-        
-      ],
          custumer: {
           id: "",
           firstName: "",
@@ -70,6 +55,13 @@ export default {
     }
   },
 
+  props: {
+      custumers: {
+          type: Array
+      }
+  },
+
+
   methods: {
        addCustumer() {
       this.custumers.push({ ...this.custumer });
@@ -79,9 +71,14 @@ export default {
         this.$delete(this.custumers, index);
     },
   },
+  costumerSelected () {
+   // Using the server bus
+   this.$emit('showCostumer', this.custumers);
+  },
 
       created (){
         console.log(this.$route)
+         console.log('The id is: ' + this.$route.params.id);
     }
 }
 </script>
