@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Customers from './components/Customers.vue'
 import Products from './components/Products.vue'
 import Purchase from './components/Purchase.vue'
+import PurchaseProduct from './components/PurchaseProduct.vue'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -18,6 +19,7 @@ const routes = [
   { path: '/customers', component:Customers,props:true},
   { path: '/products', component:Products},
   { path: '/customers/:id', component:Purchase, props: true},
+  { path: '/products/:id', component:PurchaseProduct, props: true},
   
 ]
 

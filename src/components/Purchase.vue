@@ -1,86 +1,42 @@
 <template>
-    <div>
-     <Customers  @showCostumer="handleCostumer" />
-      <!-- <Customers :custumers="[customerDetails]"/> -->
-      <!-- {{ customerDetails}} -->
-    <table style="width:100%">
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-       <th>Email</th>
-        <th>listaProizvoda</th>
-      </tr>
-    <tr v-for="(custumer,index) in custumers" :key="index" > 
-      <!-- <td v-if="index === $route.params.id">
-         {{custumer.firstName}}
-       </td>
-       <td v-if="index === $route.params.id">
-         {{custumer.lastName}}
-       </td>
-       <td v-if="index === $route.params.id">
-         {{custumer.email}}
-       </td>
-       -->
-      <td> {{custumer.firstName}} </td>
-      <td> {{custumer.lastName}}  </td>
-      <td> {{custumer.email}} </td>
-      <!-- <Customers  @showCostumer="handleCostumer" /> -->
-    </tr>
-    </table>
+<div class="mt-4">
+    <router-link to="/customers">Go back</router-link>
+    <hr/>
+
+    <div class="card mb-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ customer.firstName }}</h5>
+         <h5 class="card-title">{{ customer.lastName }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ customer.email }}</h6>
+      </div>
     </div>
+
+    <h5>Products</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="product in customer.products" :key="product.id">
+          <td>{{ product.name }}</td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
 </template>
 
 <script>
+import { customerService } from '../services/CustomerService'
 
-// import { serverBus } from '../main';
-import Customers from './Customers.vue'
-// import App from './src/App.vue'
 export default {
-  components: {
-    Customers
-    // HelloWorld
-  },
-    // components: {
-    //     App,
-    //   },
-props: {
-      custumers: {
-          type: Array
-      }
-  },
-  //   created() {
-  // // Using the server bus
-  // serverBus.$on('costumerSelected', this.customers.filter(customer => {return customer.id === this.$route.params.id;}))
-  //   },
-  data() {
-    return {
+  
+  props: ['id'],
 
-      //  custumer: {
-      //     id: this.customer.id,
-      //     firstName: this.customer.firstName,
-      //     lastName: this.custumer.lastName,
-      //     email: this.custumer.email,
-      //     listaProizvoda: []
-      //   },
-      // components: {
-      //   Customers,
-      // },
-
-        // id: this.$route.params,
-
-    }
-  },
-
-    methods: {
-      handleCostumer () {
-        console.log(this.custumers)
-        console.log('parent-click',this.custumers);
-      }
-    }
-    // created (){
-    //     console.log(this.$route)
-    //      console.log('The id is: ' + this.$route.params.id);
-    // },
+  created(){
+    this.customer = customerService.find(this.id)
+  }
 
   //  computed: {
   //   customerDetails() {   
